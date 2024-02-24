@@ -39,5 +39,14 @@ namespace Mission06_Kim.Controllers
 
             return View("Confirmation", response);
         }
+
+        public IActionResult MyCollection()
+        {
+            //Linq to pull all movies by alphabetical order of title
+            var movies = _context.Movies
+                .OrderBy(x => x.Title).ToList();
+
+            return View(movies);
+        }
     }
 }
