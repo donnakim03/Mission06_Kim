@@ -50,7 +50,10 @@
         <input asp-for="LentTo" />
         <br /><br />
         <label asp-for="CopiedToPlex">Copied to Plex</label><br />
-        <input asp-for="CopiedToPlex" />
+        <select asp-for="CopiedToPlex">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
         <br /><br />
         <label asp-for="Notes">Notes</label><br />
         <input asp-for="Notes" maxlength="25" />

@@ -26,7 +26,7 @@ namespace Mission06_Kim.Models
         public string? LentTo { get; set; }
 
         [Required]
-        public int CopiedToPlex { get; set; }
+        public bool CopiedToPlex { get; set; }
         public string? Notes { get; set; }
     }
 
