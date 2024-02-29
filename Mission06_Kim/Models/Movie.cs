@@ -12,7 +12,7 @@ namespace Mission06_Kim.Models
         public int? CategoryId { get; set; }
         public Category? Category { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Must enter title")]
         public string Title { get; set; }
 
         [Required]
