@@ -29,16 +29,24 @@ namespace Mission06_Kim.Controllers
 
         public IActionResult EnterMovies() // Connect to page with form to enter movies
         {
-            return View("EnterMovies");
+            return View("EnterMovies", new Movie());
         }
 
         [HttpPost]
         public IActionResult EnterMovies(Movie response)
         {
-            _context.Movies.Add(response); // add record to the database
-            _context.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                _context.Movies.Add(response); // add record to the database
+                _context.SaveChanges();
 
-            return View("Confirmation", response);
+                return View("Confirmation", response);
+            }
+            else
+            {
+                return View(response);
+            }
+            
         }
 
         public IActionResult MyCollection()
