@@ -1,6 +1,7 @@
 // Donna Kim
 // Section 03
 // Description: This is my Web app for Joel Hilton, who is a film reviewer. It is connected to a database of his favorite films.
+// You can add, update, and delete movies in the collection.
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -35,7 +36,7 @@ namespace Mission06_Kim.Controllers
         [HttpPost]
         public IActionResult EnterMovies(Movie response)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) // Check if valid input
             {
                 _context.Movies.Add(response); // add record to the database
                 _context.SaveChanges();
@@ -59,7 +60,7 @@ namespace Mission06_Kim.Controllers
         }
 
         [HttpGet]
-        public IActionResult Update(int id)
+        public IActionResult Update(int id) // Grab the MovieId of movie to edit and send to editable form
         {
             var movieToUpdate = _context.Movies
                 .Single(x => x.MovieId == id);
@@ -68,16 +69,16 @@ namespace Mission06_Kim.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update(Movie movieToUpdate)
+        public IActionResult Update(Movie movieToUpdate) // Grab movie to update and save the changes
         {
             _context.Update(movieToUpdate);
             _context.SaveChanges();
 
-            return RedirectToAction("MyCollection");
+            return RedirectToAction("MyCollection"); // Redirect to collection table display
         }
 
         [HttpGet]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int id) // grab MovieId of movie to delete and send to delete view
         {
             var movieToDelete = _context.Movies
                 .Single(x => x.MovieId == id);
@@ -86,12 +87,12 @@ namespace Mission06_Kim.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(Movie movieToDelete)
+        public IActionResult Delete(Movie movieToDelete) // confirm deletion and delete movie
         {
             _context.Movies.Remove(movieToDelete);
             _context.SaveChanges();
 
-            return RedirectToAction("MyCollection");
+            return RedirectToAction("MyCollection"); // return to view of collection table display
         }
     }
 }
