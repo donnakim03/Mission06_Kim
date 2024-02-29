@@ -9,7 +9,16 @@
 
     <form method="post">
         <label asp-for="Category">Category</label><br />
-        <input asp-for="Category" />
+        <select asp-for="CategoryId">
+            <option value="1">Miscellaneous</option>
+            <option value="2">Drama</option>
+            <option value="3">Television</option>
+            <option value="4">Horror/Suspense</option>
+            <option value="5">Comedy</option>
+            <option value="6">Family</option>
+            <option value="7">Action/Adventure</option>
+            <option value="8">VHS</option>
+        </select>
         <br /><br />
         <label asp-for="Title">Title</label><br />
         <input asp-for="Title" />
@@ -36,6 +45,9 @@
         <br /><br />
         <label asp-for="LentTo">Lent To</label><br />
         <input asp-for="LentTo" />
+        <br /><br />
+        <label asp-for="CopiedToPlex">Copied to Plex</label><br />
+        <input asp-for="CopiedToPlex" />
         <br /><br />
         <label asp-for="Notes">Notes</label><br />
         <input asp-for="Notes" maxlength="25" />
