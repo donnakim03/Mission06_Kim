@@ -67,5 +67,23 @@ namespace Mission06_Kim.Controllers
 
             return RedirectToAction("MyCollection");
         }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var movieToDelete = _context.Movies
+                .Single(x => x.MovieId == id);
+
+            return View(movieToDelete);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Movie movieToDelete)
+        {
+            _context.Movies.Remove(movieToDelete);
+            _context.SaveChanges();
+
+            return RedirectToAction("MyCollection");
+        }
     }
 }
