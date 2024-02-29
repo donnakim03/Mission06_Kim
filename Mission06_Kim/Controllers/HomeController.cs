@@ -3,6 +3,7 @@
 // Description: This is my Web app for Joel Hilton, who is a film reviewer. It is connected to a database of his favorite films.
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Mission06_Kim.Models;
 using System.Diagnostics;
 
@@ -43,7 +44,7 @@ namespace Mission06_Kim.Controllers
         public IActionResult MyCollection()
         {
             //Linq to pull all movies by alphabetical order of title
-            var movies = _context.Movies
+            var movies = _context.Movies.Include("Category")
                 .OrderBy(x => x.Title).ToList();
 
             return View(movies);

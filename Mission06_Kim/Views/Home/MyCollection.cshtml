@@ -4,7 +4,7 @@
 @{
 }
 
-
+@model List<Movie>
 
 <table>
     <thead>
@@ -16,19 +16,26 @@
             <th>Rating</th>
             <th>Edited</th>
             <th>Lent To</th>
+            <th>CopiedToPlex</th>
             <th>Notes</th>
         </tr>
     </thead>
-    <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </tbody>
+
+    @foreach (var currMovie in Model)
+    {
+        <tbody>
+            <tr>
+                <td>@currMovie.Category?.CategoryName</td>
+                <td>@currMovie.Title</td>
+                <td>@currMovie.Year</td>
+                <td>@currMovie.Director</td>
+                <td>@currMovie.Rating</td>
+                <td>@currMovie.Edited</td>
+                <td>@currMovie.LentTo</td>
+                <td>@currMovie.CopiedToPlex</td>
+                <td>@currMovie.Notes</td>
+            </tr>
+        </tbody>
+    }
+    
 </table>
