@@ -49,5 +49,23 @@ namespace Mission06_Kim.Controllers
 
             return View(movies);
         }
+
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            var movieToUpdate = _context.Movies
+                .Single(x => x.MovieId == id);
+
+            return View("EnterMovies", movieToUpdate);
+        }
+
+        [HttpPost]
+        public IActionResult Update(Movie movieToUpdate)
+        {
+            _context.Update(movieToUpdate);
+            _context.SaveChanges();
+
+            return RedirectToAction("MyCollection");
+        }
     }
 }

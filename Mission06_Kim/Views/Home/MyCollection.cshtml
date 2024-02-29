@@ -34,6 +34,9 @@
                 <td>@currMovie.LentTo</td>
                 <td>@currMovie.CopiedToPlex</td>
                 <td>@currMovie.Notes</td>
+
+                <td><a class="btn btn-light" asp-controller="Home" asp-action="Update" asp-route-id="@currMovie.MovieId">Update</a></td>
+                <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@currMovie.MovieId">Delete</a></td>
             </tr>
         </tbody>
     }
